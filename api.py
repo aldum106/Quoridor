@@ -24,8 +24,7 @@ def jouer_coup(id_partie, type_coup, position):
     rep = requests.post(url_base+'jouer/', data={'id': id_partie, 'type' : type_coup, 'pos' : position})
     if rep.status_code == 200:
          rep = rep.json()
-         return rep
+         return rep['état']
     else:
          RuntimeError(rep['message'])
-
 
