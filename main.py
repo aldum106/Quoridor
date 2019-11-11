@@ -55,7 +55,7 @@ def jouer_a_lejeu():
         position_y = int(input('Choisis une case en y :'))
         etat = jouer_coup(identif, type_coup, (position_x, position_y))
         if 'gagnant' in etat.keys():
-            continue
+             continue
 jouer_a_lejeu()
 
 
