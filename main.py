@@ -1,14 +1,3 @@
-dico = {
-    "joueurs": [
-        {"nom": "idul", "murs": 7, "pos": [3, 4]},
-        {"nom": "automate", "murs": 3, "pos": [4, 6]}
-    ],
-    "murs": {
-        "horizontaux": [[4, 4], [2, 6], [3, 8], [5, 8], [7, 8]],
-        "verticaux": [[9, 8], [4, 4], [2, 6], [7, 5], [7, 7]]
-    }
-}
-
 import argparse
 
 
