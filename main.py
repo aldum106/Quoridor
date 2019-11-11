@@ -52,4 +52,3 @@ def afficher_damier_ascii(dic):
 
 
 
-print(afficher_damier_ascii(dico))
