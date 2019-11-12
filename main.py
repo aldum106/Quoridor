@@ -10,7 +10,7 @@ def analyser_commande():
     return parser.parse_args()
 
 def afficher_damier_ascii(dic):
-    premiere_ligne = 'Légende: 1=' + dic['joueurs'][0]['nom'] + ', 2=automate \n' + '   ' + '-'*35 + '\n'
+    premiere_ligne = 'Légende: 1=' + dic['joueurs'][0]['nom'] + ', 2=' + dic['joueurs'][1]['nom'] + '\n' + '   ' + '-'*35 + '\n'
     plateau = [['.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ',
      ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', 
      ' ', ' ', '.', ' | ', '\n', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
@@ -56,6 +56,4 @@ def jouer():
         etat = jouer_coup(identif, type_coup, (position_x, position_y))
         if 'gagnant' in etat.keys():
              continue
-
-
 jouer()
