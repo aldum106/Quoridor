@@ -29,4 +29,5 @@ def jouer_coup(id_partie, type_coup, position):
          return rep['état']
     else:
          print(f"Le POST sur {url_base+'jouer/'} a produit le code d'erreur {rep.status_code}.")
-         RuntimeError
+         raise RuntimeError
+
