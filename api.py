@@ -8,7 +8,8 @@ def lister_parties(idul):
          rep = rep.json()
          return rep['parties']
      else:
-          raise RuntimeError(rep['message'])
+          print(f"Le GET sur {url_base+'lister'} a produit le code d'erreur {rep.status_code}.")
+          raise RuntimeError
 
 def débuter_partie(idul):
     url_base = 'https://python.gel.ulaval.ca/quoridor/api/'
@@ -17,7 +18,8 @@ def débuter_partie(idul):
          rep = rep.json()
          return (rep['id'], rep['état'])
     else:
-         raise RuntimeError(rep['message'])
+         print(f"Le POST sur {url_base+'débuter/'} a produit le code d'erreur {rep.status_code}.")
+         raise RuntimeError
 
 def jouer_coup(id_partie, type_coup, position):
     url_base = 'https://python.gel.ulaval.ca/quoridor/api/'
@@ -26,5 +28,5 @@ def jouer_coup(id_partie, type_coup, position):
          rep = rep.json()
          return rep['état']
     else:
-         RuntimeError(rep['message'])
-
+         print(f"Le POST sur {url_base+'jouer/'} a produit le code d'erreur {rep.status_code}.")
+         RuntimeError
