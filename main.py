@@ -50,11 +50,12 @@ def jouer():
 
     while True:
         afficher_damier_ascii(etat)
-        type_coup = input('Quel est ton coup (D, MH ou MV) ?')
-        position_x = int(input('Choisis une case en x :'))
-        position_y = int(input('Choisis une case en y :'))
+        type_coup = input('Quel est votre coup (D, MH ou MV) ?')
+        position_x = int(input('Veuillez choisir une case en x :'))
+        position_y = int(input('Veuillez choisir une case en y :'))
         etat = jouer_coup(identif, type_coup, (position_x, position_y))
         
 
 jouer()
+
 
