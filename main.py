@@ -1,9 +1,12 @@
 import argparse
 
 
+from api import débuter_partie, jouer_coup
+
+
 def analyser_commande():
     parser = argparse.ArgumentParser(description="Jeu Quoridor - phase 1")
-    parser.add_argument(metavar='idul', dest='nom_du_joueur', default='nom du joueur',
+    parser.add_argument(metavar='idul', dest='idul', default='nom du joueur',
     help="IDUL du joueur.")
     parser.add_argument('-l', '--lister', default=False, help = 'Lister les identifiants de vos 20 dernières parties.',
     metavar='')
@@ -40,11 +43,8 @@ def afficher_damier_ascii(dic):
     print(premiere_ligne + ''.join(''.join(i for i in ligne) for ligne in plateau) + '\n')
 
 
-from api import *
-
-
 def jouer():
-    idul = input('Quel est ton nom de joueur? ')
+    idul = analyser_commande().idul
     etat = débuter_partie(idul)[1]
     identif = débuter_partie(idul)[0]
 
@@ -54,6 +54,7 @@ def jouer():
         position_x = int(input('Choisis une case en x :'))
         position_y = int(input('Choisis une case en y :'))
         etat = jouer_coup(identif, type_coup, (position_x, position_y))
-        if 'gagnant' in etat.keys():
-             continue
+        
+
 jouer()
+
