@@ -1,7 +1,7 @@
 import argparse
 
 
-from api import débuter_partie, jouer_coup
+from api import *
 
 
 def analyser_commande():
@@ -50,12 +50,20 @@ def jouer():
 
     while True:
         afficher_damier_ascii(etat)
-        type_coup = input('Quel est votre coup (D, MH ou MV) ?')
-        position_x = int(input('Veuillez choisir une case en x :'))
-        position_y = int(input('Veuillez choisir une case en y :'))
-        etat = jouer_coup(identif, type_coup, (position_x, position_y))
+        try:
+            type_coup = input('Quel est votre coup (D, MH ou MV) ?')
+            position_x = int(input('Veuillez choisir une case en x :'))
+            position_y = int(input('Veuillez choisir une case en y :'))
+            etat = jouer_coup(identif, type_coup, (position_x, position_y))
         
+        except ValueError:
+            print('Votre case est invalide, veuillez choisir un entier entre 1 et 9')
+
+        except RuntimeError as err:
+            print(err)
+            print('Veuillez reprendre votre coup')
+
+        except StopIteration as err:
+            print(f'Félicitations {err}, vous avez gagné !')
 
 jouer()
-
-
