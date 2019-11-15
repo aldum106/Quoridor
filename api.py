@@ -26,7 +26,7 @@ def débuter_partie(idul):
 
 def jouer_coup(id_partie, type_coup, position):
     rep = requests.post(u+'jouer/', data={'id': id_partie, 'type' : type_coup,
-'pos' : position})
+                                          'pos' : position})
     if rep.status_code == 200:
         rep = rep.json()
         if 'gagnant' in rep.keys():
