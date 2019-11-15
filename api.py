@@ -12,7 +12,7 @@ def lister_parties(idul):
         if 'message' in rep.keys():
             raise RuntimeError(rep['message'])
         return rep['parties']
-    print(f"Le GET sur {u+'lister/'} a produit le code d'erreur {rep.status_code}.")
+    return(f"Le GET sur {u+'lister/'} a produit le code d'erreur {rep.status_code}.")
 
 
 def débuter_partie(idul):
@@ -23,7 +23,7 @@ def débuter_partie(idul):
         if 'message' in rep.keys():
             raise RuntimeError(rep['message'])
         return (rep['id'], rep['état'])
-    print(f"Le POST sur {u+'débuter/'} a produit le code d'erreur {rep.status_code}.")
+    return(f"Le POST sur {u+'débuter/'} a produit le code d'erreur {rep.status_code}.")
 
 
 def jouer_coup(id_partie, type_coup, position):
@@ -37,4 +37,4 @@ def jouer_coup(id_partie, type_coup, position):
         if 'message' in rep.keys():
             raise RuntimeError(rep['message'])
         return rep['état']
-    print(f"Le POST sur {u+'jouer/'} a produit le code d'erreur {rep.status_code}.")
+    return(f"Le POST sur {u+'jouer/'} a produit le code d'erreur {rep.status_code}.")
