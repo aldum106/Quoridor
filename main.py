@@ -7,7 +7,7 @@ import api
 def analyser_commande():
     parser = argparse.ArgumentParser(description="Jeu Quoridor - phase 1")
     parser.add_argument('idul', metavar='idul', help="IDUL du joueur.")
-    parser.add_argument('-l', '--lister', metavar='',
+    parser.add_argument('-l', '--lister', action='store_true', 
     help = 'Lister les identifiants de vos 20 dernières parties.')
     return parser.parse_args()
 
@@ -65,9 +65,7 @@ def jouer():
             print(f'{err} a gagné !')
             break
 
-
-x = analyser_commande()
-if x.lister is None:
-    jouer()
+if analyser_commande().lister:
+    print(api.lister_parties(analyser_commande().idul))
 else:
-    print(api.lister_parties(x.idul))
+    jouer()
