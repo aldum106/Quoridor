@@ -5,6 +5,7 @@ import api
 
 
 def analyser_commande():
+    """Analyser les commandes du terminal"""
     parser = argparse.ArgumentParser(description="Jeu Quoridor - phase 1")
     parser.add_argument('idul', metavar='idul', help="IDUL du joueur.")
     parser.add_argument('-l', '--lister', action='store_true',
@@ -13,6 +14,7 @@ def analyser_commande():
 
 
 def afficher_damier_ascii(dic):
+    """Afficher le damier"""
     premiere_ligne = 'Légende: 1=' + dic['joueurs'][0]['nom'] + ', 2=' + dic['joueurs'][1]['nom'] + '\n' + '   ' + '-'*35 + '\n'
     plateau = [['.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ',
                 ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ',
