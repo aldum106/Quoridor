@@ -5,6 +5,7 @@ u = 'https://python.gel.ulaval.ca/quoridor/api/'
 
 
 def lister_parties(idul):
+    """Lister les parties"""
     rep = requests.get(u+'lister/', params={'idul': idul})
     if rep.status_code == 200:
         rep = rep.json()
@@ -15,6 +16,7 @@ def lister_parties(idul):
 
 
 def débuter_partie(idul):
+    """Débuter une partie"""
     rep = requests.post(u+'débuter/', data={'idul': idul})
     if rep.status_code == 200:
         rep = rep.json()
@@ -25,6 +27,7 @@ def débuter_partie(idul):
 
 
 def jouer_coup(id_partie, type_coup, position):
+    """Jouer un coup"""
     rep = requests.post(u+'jouer/', data={'id': id_partie, 'type' : type_coup,
                                           'pos' : position})
     if rep.status_code == 200:
