@@ -1,16 +1,16 @@
 import argparse
 
 
-from api import *
+import api
 
 
 def analyser_commande():
     parser = argparse.ArgumentParser(description="Jeu Quoridor - phase 1")
-    parser.add_argument(metavar='idul', dest='idul', default='nom du joueur',
-    help="IDUL du joueur.")
-    parser.add_argument('-l', '--lister', default=False, help = 'Lister les identifiants de vos 20 dernières parties.',
-    metavar='')
+    parser.add_argument('idul', metavar='idul', help="IDUL du joueur.")
+    parser.add_argument('-l', '--lister', metavar='',
+    help = 'Lister les identifiants de vos 20 dernières parties.')
     return parser.parse_args()
+
 
 def afficher_damier_ascii(dic):
     premiere_ligne = 'Légende: 1=' + dic['joueurs'][0]['nom'] + ', 2=' + dic['joueurs'][1]['nom'] + '\n' + '   ' + '-'*35 + '\n'
@@ -44,23 +44,30 @@ def afficher_damier_ascii(dic):
 
 
 def jouer():
+
     idul = analyser_commande().idul
-    etat = débuter_partie(idul)[1]
-    identif = débuter_partie(idul)[0]
+    etat = api.débuter_partie(idul)[1]
+    identif = api.débuter_partie(idul)[0]
 
     while True:
-        afficher_damier_ascii(etat)
         try:
+            afficher_damier_ascii(etat)
             type_coup = input('Quel est votre coup (D, MH ou MV) ?')
             position_x = input('Veuillez choisir une case en x :')
             position_y = input('Veuillez choisir une case en y :')
-            etat = jouer_coup(identif, type_coup, (position_x, position_y))
+            etat = api.jouer_coup(identif, type_coup, (position_x, position_y))
         
         except RuntimeError as err:
             print(err)
             print('Veuillez reprendre votre coup')
 
         except StopIteration as err:
-            print(f'Félicitation {err}, vous avez gagné !')
+            print(f'{err} a gagné !')
+            break
 
-jouer()
+
+x = analyser_commande()
+if x.lister is None:
+    jouer()
+else:
+    print(api.lister_parties(x.idul))
