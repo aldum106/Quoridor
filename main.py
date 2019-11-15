@@ -7,15 +7,15 @@ import api
 def analyser_commande():
     parser = argparse.ArgumentParser(description="Jeu Quoridor - phase 1")
     parser.add_argument('idul', metavar='idul', help="IDUL du joueur.")
-    parser.add_argument('-l', '--lister', action='store_true', 
-    help = 'Lister les identifiants de vos 20 dernières parties.')
+    parser.add_argument('-l', '--lister', action='store_true',
+    help='Lister les identifiants de vos 20 dernières parties.')
     return parser.parse_args()
 
 
 def afficher_damier_ascii(dic):
     premiere_ligne = 'Légende: 1=' + dic['joueurs'][0]['nom'] + ', 2=' + dic['joueurs'][1]['nom'] + '\n' + '   ' + '-'*35 + '\n'
     plateau = [['.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ',
-     ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', 
+     ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ',
      ' ', ' ', '.', ' | ', '\n', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
      ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
      ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|', '\n'] for i in range(9)]
@@ -26,7 +26,8 @@ def afficher_damier_ascii(dic):
         plateau[i].insert(0, str(9-i) + ' | ')
 
     plateau.append(['--|-----------------------------------\n'])
-    plateau.append([' ', ' ', '| ', '1', '   2', '   3', '   4', '   5', '   6', '   7', '   8', '   9'])
+    plateau.append([' ', ' ', '| ', '1', '   2',
+     '   3', '   4', '   5', '   6', '   7', '   8', '   9'])
     plateau[8] = plateau[8][:36]
 
     for pos in dic['murs']['horizontaux']:
@@ -39,7 +40,7 @@ def afficher_damier_ascii(dic):
         plateau[9-y-1][x*4 - 5] = '|'
         plateau[9-y-1][34 + x*4] = '|'
         plateau[9-y][x*4 - 5] = '|'
-        
+
     print(premiere_ligne + ''.join(''.join(i for i in ligne) for ligne in plateau) + '\n')
 
 
@@ -56,7 +57,7 @@ def jouer():
             position_x = input('Veuillez choisir une case en x :')
             position_y = input('Veuillez choisir une case en y :')
             etat = api.jouer_coup(identif, type_coup, (position_x, position_y))
-        
+
         except RuntimeError as err:
             print(err)
             print('Veuillez reprendre votre coup')
