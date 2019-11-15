@@ -15,7 +15,8 @@ def analyser_commande():
 
 def afficher_damier_ascii(dic):
     """Afficher le damier"""
-    premiere_ligne = 'Légende: 1=' + dic['joueurs'][0]['nom'] + ', 2=' + dic['joueurs'][1]['nom'] + '\n' + '   ' + '-'*35 + '\n'
+    premiere_ligne = 'Légende: 1=' + dic['joueurs'][0]['nom'] + ', '
+    premiere_ligne += '2=' + dic['joueurs'][1]['nom'] + '\n' + '   ' + '-'*35 + '\n'
     plateau = [['.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ',
                 ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ', ' ', ' ', '.', ' ',
                 ' ', ' ', '.', ' | ', '\n', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
@@ -47,7 +48,7 @@ def afficher_damier_ascii(dic):
 
 
 def jouer():
-
+    """Jouer directement sur le terminal"""
     idul = analyser_commande().idul
     etat = api.débuter_partie(idul)[1]
     identif = api.débuter_partie(idul)[0]
