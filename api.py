@@ -1,3 +1,6 @@
+"""Programme pour contacter le serveur"""
+
+
 import requests
 
 

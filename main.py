@@ -1,3 +1,6 @@
+"""Programme pour jouer au jeu Quoridor"""
+
+
 import argparse
 
 
