@@ -91,5 +91,3 @@ murs = {'horizontaux': [(2, 3), (4, 4)], 'verticaux': [(6, 3)]}
 
 y = Quoridor(joueurs, murs)
 y.déplacer_jeton(2, (-1, 5))
-
-print(y)
